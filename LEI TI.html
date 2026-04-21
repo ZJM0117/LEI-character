@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>辛芷蕾 · 角色人格图鉴</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f3eeea 0%, #e0d4ca 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      padding: 16px;
+      margin: 0;
+    }
+
+    .card {
+      max-width: 640px;
+      width: 100%;
+      background: rgba(255, 255, 248, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 48px;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.12), 0 10px 25px rgba(80, 50, 30, 0.08);
+      padding: 28px 24px 36px;
+      border: 1px solid rgba(200, 170, 140, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #34261c;
+      text-align: center;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .subhead {
+      text-align: center;
+      color: #7a5f4a;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      border-bottom: 1px dashed #cbb7a8;
+      padding-bottom: 16px;
+    }
+
+    .subhead i {
+      font-style: normal;
+      background: #dac6b8;
+      padding: 4px 16px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #2f241b;
+    }
+
+    /* 欢迎页 */
+    .welcome-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 480px;
+      text-align: center;
+    }
+
+    .welcome-icon {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    .welcome-title {
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: #2d1f15;
+      margin-bottom: 6px;
+      line-height: 1.2;
+      letter-spacing: 4px;
+    }
+    .welcome-title strong {
+      font-weight: 700;
+      font-size: 3.2rem;
+      display: block;
+      margin-top: 6px;
+      letter-spacing: 8px;
+    }
+
+    .welcome-sub {
+      font-size: 1.1rem;
+      color: #6b4f3b;
+      margin-bottom: 28px;
+      font-weight: 400;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: 80px;
+      height: 1.5px;
+      background: #cbb7a8;
+      margin: 10px auto 28px;
+    }
+
+    .intro-quote {
+      font-size: 1.2rem;
+      color: #4a3628;
+      margin-bottom: 32px;
+      line-height: 1.8;
+      max-width: 460px;
+      padding: 0 10px;
+    }
+
+    .intro-detail {
+      font-size: 0.95rem;
+      color: #7a5f4a;
+      margin-bottom: 36px;
+      max-width: 400px;
+      border-top: 1px dashed #d6c4b6;
+      padding-top: 24px;
+    }
+
+    .btn-start {
+      background: #b28b6b;
+      border: none;
+      padding: 18px 56px;
+      border-radius: 80px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: white;
+      box-shadow: 0 10px 20px rgba(140, 90, 50, 0.25);
+      cursor: pointer;
+      border: 1px solid #e5cdb6;
+      transition: all 0.2s;
+      margin-top: 10px;
+    }
+
+    .btn-start:hover {
+      background: #9f7a5d;
+      transform: scale(1.02);
+      box-shadow: 0 12px 24px rgba(140, 90, 50, 0.3);
+    }
+
+    /* 答题区 */
+    .quiz-container {
+      min-height: 380px;
+    }
+
+    .question-text {
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: #2d1f15;
+      margin-bottom: 30px;
+      padding-right: 6px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-btn {
+      background: #fcf8f4;
+      border: 1.8px solid #ddcec0;
+      border-radius: 80px;
+      padding: 16px 24px;
+      text-align: left;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #3f2e1f;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.02);
+      cursor: pointer;
+      transition: all 0.18s;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .option-btn:hover {
+      background: #f1e8e0;
+      border-color: #b28b6b;
+      box-shadow: 0 8px 14px rgba(130, 80, 50, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .option-btn.selected {
+      background: #e4d3c2;
+      border-color: #8f6e53;
+      box-shadow: 0 0 0 3px rgba(170, 120, 80, 0.15);
+    }
+
+    .option-label {
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: #281e15;
+    }
+
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 36px;
+      align-items: center;
+    }
+
+    .btn {
+      background: #b28b6b;
+      border: none;
+      padding: 15px 32px;
+      border-radius: 80px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: white;
+      box-shadow: 0 8px 18px rgba(140, 90, 50, 0.2);
+      cursor: pointer;
+      border: 1px solid #e5cdb6;
+      transition: 0.15s;
+      min-width: 130px;
+    }
+
+    .btn:disabled {
+      opacity: 0.4;
+      box-shadow: none;
+      cursor: not-allowed;
+      background: #b7a089;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #5a3f2e;
+      box-shadow: none;
+      border: 1.8px solid #b28b6b;
+    }
+
+    .btn-outline:hover {
+      background: #ede1d6;
+    }
+
+    .result-card {
+      text-align: center;
+    }
+
+    .role-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #342217;
+      margin: 15px 0 6px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #d6bfab;
+      padding: 6px 24px;
+      border-radius: 60px;
+      color: #2b1c12;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 24px;
+      border: 1px solid #b28b6b;
+    }
+
+    .role-description {
+      font-size: 1.2rem;
+      line-height: 1.55;
+      color: #4a3427;
+      background: #f5ede6;
+      padding: 24px 20px;
+      border-radius: 36px;
+      margin: 24px 0 28px;
+      border-left: 6px solid #b28b6b;
+      text-align: left;
+    }
+
+    .footnote {
+      margin-top: 24px;
+      color: #947c68;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+  <h1>
+    <span>🎬 角色镜</span>
+  </h1>
+  <div class="subhead" id="subheadContainer">
+    <i id="subheadText">测出你灵魂深处的那个“她”</i>
+  </div>
+
+  <div id="mainArea" class="quiz-container"></div>
+  <div id="actionBar" class="action-bar"></div>
+</div>
+
+<script>
+  (function(){
+    "use strict";
+
+    // ---------- 题库（16题，每题三个选项）----------
+    const QUESTIONS = [
+      { id: 1, text: "你曾坚信的规则反过来伤害了你。你的第一反应是？", options: [
+          { value: "A", label: "陷入自我怀疑，开始重新审视过往所信的一切。" },
+          { value: "B", label: "痛苦迷茫，不知道该继续相信还是彻底推翻。" },
+          { value: "C", label: "愤怒，决心用自己的遭遇去推动某种改变。" }
+      ]},
+      { id: 2, text: "你背负着一段沉重的过去。寻求解脱时，你会？", options: [
+          { value: "A", label: "远走他乡，在陌生环境里用时间慢慢冲刷。" },
+          { value: "B", label: "走走停停，既想逃离又忍不住回望。" },
+          { value: "C", label: "留在原地，直面后果，用自己的方式尽力弥补。" }
+      ]},
+      { id: 3, text: "在尔虞我诈的名利场中，你更倾向哪种活法？", options: [
+          { value: "A", label: "面上无害，暗中观察，借力打力。" },
+          { value: "B", label: "保持善意，但也懂得保护自己，不主动害人。" },
+          { value: "C", label: "凭眼光和魄力堂堂正正开疆拓土。" }
+      ]},
+      { id: 4, text: "面对实力深不可测的对手，你会？", options: [
+          { value: "A", label: "沉默观察，找准破绽，一击定胜负。" },
+          { value: "B", label: "谨慎周旋，寻找退路，不轻易硬碰。" },
+          { value: "C", label: "正面硬撼，输阵不输人，锋芒尽显。" }
+      ]},
+      { id: 5, text: "家庭突遭变故，你会如何应对？", options: [
+          { value: "A", label: "牺牲自我，默默扛起一切，苦往肚里咽。" },
+          { value: "B", label: "尽力分担，但也希望家人能共同面对。" },
+          { value: "C", label: "稳住大局，用理智规划出路，做全家定心丸。" }
+      ]},
+      { id: 6, text: "发现深爱的人背叛了你，你最可能？", options: [
+          { value: "A", label: "执念难消，不惜代价也要让对方尝到痛苦。" },
+          { value: "B", label: "痛苦很久，反复拉扯，最终慢慢放下。" },
+          { value: "C", label: "果断切割，带着尊严离开，重启人生。" }
+      ]},
+      { id: 7, text: "当你身处一个充满不确定性的环境，前景不明时，你更相信什么？", options: [
+          { value: "A", label: "靠自己的直觉和经验，走一步看一步，随机应变。" },
+          { value: "B", label: "边走边调整，灵活但也会做短期计划。" },
+          { value: "C", label: "提前规划多种预案，尽可能把变量控制在手中。" }
+      ]},
+      { id: 8, text: "面对“人情”与“规则”的两难，你通常？", options: [
+          { value: "A", label: "坚持规则，专业判断不应被人情左右。" },
+          { value: "B", label: "视情况而定，尽量在规则内给人留余地。" },
+          { value: "C", label: "兼顾人情，守住底线时尽量柔和表达。" }
+      ]},
+      { id: 9, text: "你更喜欢如何与世界相处？", options: [
+          { value: "A", label: "安静漂泊，在孤独中感受和寻找答案。" },
+          { value: "B", label: "享受独处也偶尔融入人群，看心情切换。" },
+          { value: "C", label: "热烈参与，在烟火气里活出浓烈滋味。" }
+      ]},
+      { id: 10, text: "需要隐藏身份周旋各方时，你更擅长？", options: [
+          { value: "A", label: "展现多面性，让人捉摸不透真实意图。" },
+          { value: "B", label: "低调行事，不引人注目地完成任务。" },
+          { value: "C", label: "气场碾压，用实力和权威让人不敢妄动。" }
+      ]},
+      { id: 11, text: "紧急关头，需要你立刻做出一个可能影响多人的决定，你倾向于？", options: [
+          { value: "A", label: "依靠数据和过往经验快速分析，做出最合理的判断。" },
+          { value: "B", label: "权衡数据和直觉，找一个相对稳妥的折中方案。" },
+          { value: "C", label: "听从内心的声音和直觉，选择那个自己不会后悔的选项。" }
+      ]},
+      { id: 12, text: "你性格中最鲜明的矛盾是？", options: [
+          { value: "A", label: "外表强硬，嘴上不饶人，内心却极度柔软。" },
+          { value: "B", label: "有时强势有时随和，看状态和对象而定。" },
+          { value: "C", label: "看似随性漫不经心，实则内心自有丘壑。" }
+      ]},
+      { id: 13, text: "当你陷入一段漫长的低谷期，看不到尽头时，什么最能支撑你？", options: [
+          { value: "A", label: "不甘心就此沉沦的傲气，拼一口气也要爬出来。" },
+          { value: "B", label: "一点点微小的希望，以及身边人的陪伴。" },
+          { value: "C", label: "对身边人的责任感，为了他们我也不能倒下。" }
+      ]},
+      { id: 14, text: "当一段关系让你觉得被消耗时，你会？", options: [
+          { value: "A", label: "快刀斩乱麻，哪怕难受也要及时止损。" },
+          { value: "B", label: "纠结很久，尝试沟通修复，实在不行再离开。" },
+          { value: "C", label: "给对方也给自己多次机会，直到彻底死心才离开。" }
+      ]},
+      { id: 15, text: "你如何看待曾经受过的伤害？", options: [
+          { value: "A", label: "伤口是生命的印记，我带着它们继续走。" },
+          { value: "B", label: "不会忘记，但尽量让它不再影响现在的生活。" },
+          { value: "C", label: "必须讨回公道，把失去的从命运手里夺回。" }
+      ]},
+      { id: 16, text: "你觉得哪种状态更接近你理想中的自己？", options: [
+          { value: "A", label: "温柔且有力量，能默默支撑起他人的梦想。" },
+          { value: "B", label: "既有柔软的一面，也有独立果断的时刻。" },
+          { value: "C", label: "飒爽独立，在世俗规则中闯出自己的一条路。" }
+      ]}
+    ];
+
+    // ---------- 结果映射 ----------
+    const RESULTS_MAP = {
+      "泰莎": { title:"泰莎", badge:"规则的重塑者", desc:"你曾坚信逻辑与规则至上，直到亲身走过至暗时刻，才理解了法律背后复杂的人性。这份觉醒让你更加深刻与悲悯。" },
+      "曾美云": { title:"曾美云", badge:"赎罪的远行者", desc:"内心背负沉重过往，在道德与情感的漩涡中挣扎。但你未被打垮，反而在寻求新生的路上走得比任何人都坚定。" },
+      "金玉妍": { title:"金玉妍", badge:"深宫的布局者", desc:"外表心直口快，实则深谙人性与权谋。你擅长隐藏锋芒，为了心中更大的目标，可以耐心布局，一击必中。" },
+      "李李": { title:"李李", badge:"黄河路的操盘手", desc:"精明干练，长袖善舞。外表风情万种，内心目标明确，每一步都经过深思熟虑，是真正的实干家。" },
+      "丁白缨": { title:"丁白缨", badge:"清冷的刀客", desc:"清冷孤傲，武艺高强。平日里沉默寡言，不怒自威，一旦出手便是雷霆万钧。那份凌厉与克制，是你最独特的魅力。" },
+      "入云龙": { title:"入云龙", badge:"云中女将", desc:"英气逼人，气场强大。内心拥有超常韧性与恢复力，无论遭遇何种打击，都能迅速重整旗鼓，再次亮剑。" },
+      "夏明月": { title:"夏明月", badge:"扛起家庭的长姐", desc:"早早扛起家庭重担，为了守护家人可以毫不犹豫牺牲自己。这份坚强与担当，是你最温暖的光。" },
+      "大乔": { title:"大乔", badge:"困境中的磐石", desc:"在底层顽强扎根。朴实坚韧的外表下，藏着一颗为守护家人可以付出一切的强大心脏。" },
+      "肖妮": { title:"肖妮", badge:"家庭的定海神针", desc:"平日里不显山露水，但当风暴来临时，总能展现出惊人的冷静与韧性，稳稳托住生活的底。" },
+      "顾遥": { title:"顾遥", badge:"执念的复仇者", desc:"对情感有着极致要求。美好破碎后，不甘化为强大驱动力，不惜一切代价寻求内心的平衡。" },
+      "林飒": { title:"林飒", badge:"独立的火焰", desc:"勇敢独立，三观正。外表强硬，内心柔软，坚持不依附于任何人，活出自己的精彩。" },
+      "海棠朵朵": { title:"海棠朵朵", badge:"自由的灵魂", desc:"率直幽默，思想奔放。看似漫不经心，实则内心自有大格局，从不依附于人，活得通透洒脱。" },
+      "方宇凌": { title:"方宇凌", badge:"冷静的守护者", desc:"专业冷静，责任心极强。无论环境多险恶，总能保持冷静，用过硬技术为身边人撑起安全天空。" },
+      "刘梓懿": { title:"刘梓懿", badge:"仁心的刀锋", desc:"对待专业果断利落，面对患者细腻入微。理性是你的手术刀，共情则是缝合伤口的线。" },
+      "红姑娘": { title:"红姑娘", badge:"江湖烈火", desc:"敢爱敢恨，快意恩仇。身上有股不服输的泼辣劲儿，对朋友讲义气，是团队最信赖的伙伴。" },
+      "安陆": { title:"安陆", badge:"诗意的修行者", desc:"神秘复杂，不断变换身份面貌，在漂泊中探寻内心答案。既坚强又脆弱，充满诗意的矛盾。" }
+    };
+
+    // 角色匹配模式 (重新设计，包含A/B/C，贴合角色特质)
+    const ROLE_PATTERNS = {
+      "泰莎":      "ABABABABABABABAB",
+      "曾美云":    "BCCBCCBCCBCCBCCB",
+      "金玉妍":    "ACBACBACBACBACBA",
+      "李李":      "CABCABCABCABCABC",
+      "丁白缨":    "AABBAABBAABBAABB",
+      "入云龙":    "CCBBCCBBCCBBCCBB",
+      "夏明月":    "BBACCABBACCABBAC",
+      "大乔":      "CCAACCAACCAACCAA",
+      "肖妮":      "BACCBACCBACCBACC",
+      "顾遥":      "ABCCABCCABCCABCC",
+      "林飒":      "CABBCABBCABBCABB",
+      "海棠朵朵":  "BCAABCAABCAABCAA",
+      "方宇凌":    "AACCAACCAACCAACC",
+      "刘梓懿":    "CBABCBABCBABCBAB",
+      "红姑娘":    "CACBCACBCACBCACB",
+      "安陆":      "ABBCABBCABBCABBC"
+    };
+
+    // ---------- 状态 ----------
+    let state = {
+      page: 'welcome',
+      currentQuestionIndex: 0,
+      answers: {}
+    };
+    for (let i=1; i<=16; i++) state.answers[i] = null;
+
+    const mainArea = document.getElementById('mainArea');
+    const actionBar = document.getElementById('actionBar');
+    const subheadText = document.getElementById('subheadText');
+
+    function allQuestionsAnswered() {
+      return Object.values(state.answers).every(v => v !== null);
+    }
+
+    function getBestMatchRole() {
+      const userSeq = [];
+      for (let i=1; i<=16; i++) userSeq.push(state.answers[i]);
+      const userStr = userSeq.join('');
+      let bestRole = "海棠朵朵";
+      let bestScore = -1;
+      for (let [role, pattern] of Object.entries(ROLE_PATTERNS)) {
+        let score = 0;
+        for (let i=0; i<16; i++) if (userStr[i] === pattern[i]) score++;
+        if (score > bestScore) { bestScore = score; bestRole = role; }
+      }
+      return bestRole;
+    }
+
+    // 欢迎页
+    function renderWelcome() {
+      subheadText.innerText = '测出你灵魂深处的那个“她”';
+      mainArea.innerHTML = `
+        <div class="welcome-content">
+          <div class="welcome-icon">🎬</div>
+          <div class="welcome-title">
+            辛芷蕾
+            <strong>角色人格图鉴</strong>
+          </div>
+          <div class="welcome-sub">· 镜中人 ·</div>
+          <div class="divider"></div>
+          <div class="intro-quote">
+            “她曾于刀光中敛眉，也在繁花里举杯。<br>
+            每一个转身，都是一次人性的显影。”
+          </div>
+          <div class="intro-detail">
+            透过角色的眼眸，看见自己隐藏的轮廓。
+          </div>
+          <button class="btn-start" id="startBtn">开始探索</button>
+        </div>
+      `;
+      actionBar.innerHTML = '';
+      document.getElementById('startBtn').addEventListener('click', () => {
+        state.page = 'quiz';
+        state.currentQuestionIndex = 0;
+        renderQuiz();
+      });
+    }
+
+    function renderQuiz() {
+      subheadText.innerText = `第 ${state.currentQuestionIndex+1} / 16 题`;
+      const q = QUESTIONS[state.currentQuestionIndex];
+      const curAns = state.answers[q.id];
+      
+      let optsHtml = '';
+      q.options.forEach(opt => {
+        const selectedClass = (curAns === opt.value) ? 'selected' : '';
+        optsHtml += `<div class="option-btn ${selectedClass}" data-opt="${opt.value}"><span class="option-label">${opt.label}</span></div>`;
+      });
+      
+      mainArea.innerHTML = `<div class="question-text">${q.text}</div><div class="options">${optsHtml}</div>`;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.answers[q.id] = btn.dataset.opt;
+          renderQuiz();
+        });
+      });
+      
+      renderActionBar();
+    }
+
+    function renderActionBar() {
+      if (state.page === 'quiz') {
+        const isLast = state.currentQuestionIndex === QUESTIONS.length - 1;
+        const prevDisabled = state.currentQuestionIndex === 0;
+        const curAns = state.answers[QUESTIONS[state.currentQuestionIndex].id];
+        const nextDisabled = curAns === null;
+        const allDone = allQuestionsAnswered();
+        
+        let btns = `<button class="btn btn-outline" id="prevBtn" ${prevDisabled ? 'disabled' : ''}>← 上一题</button>`;
+        if (isLast) {
+          btns += `<button class="btn" id="nextOrResultBtn" ${!allDone ? 'disabled' : ''}>✨ 解锁角色</button>`;
+        } else {
+          btns += `<button class="btn" id="nextOrResultBtn" ${nextDisabled ? 'disabled' : ''}>下一题 →</button>`;
+        }
+        actionBar.innerHTML = btns;
+        
+        document.getElementById('prevBtn')?.addEventListener('click', () => {
+          if (state.currentQuestionIndex > 0) { state.currentQuestionIndex--; renderQuiz(); }
+        });
+        document.getElementById('nextOrResultBtn')?.addEventListener('click', () => {
+          if (isLast && allDone) {
+            state.page = 'result';
+            renderResult();
+          } else if (!isLast && !nextDisabled) {
+            state.currentQuestionIndex++;
+            renderQuiz();
+          }
+        });
+      } else if (state.page === 'result') {
+        actionBar.innerHTML = `<button class="btn btn-outline" id="restartBtn">🔄 再测一次</button>`;
+        document.getElementById('restartBtn').addEventListener('click', () => {
+          state = { page: 'welcome', currentQuestionIndex: 0, answers: {} };
+          for (let i=1; i<=16; i++) state.answers[i] = null;
+          renderWelcome();
+        });
+      }
+    }
+
+    function renderResult() {
+      subheadText.innerText = '你的灵魂角色';
+      const roleKey = getBestMatchRole();
+      const data = RESULTS_MAP[roleKey] || RESULTS_MAP["海棠朵朵"];
+      
+      mainArea.innerHTML = `
+        <div class="result-card">
+          <div class="role-title">${data.title}</div>
+          <div class="badge">${data.badge}</div>
+          <div class="role-description">${data.desc}</div>
+        </div>
+      `;
+      renderActionBar();
+    }
+
+    renderWelcome();
+  })();
+</script>
+</body>
+</html>
